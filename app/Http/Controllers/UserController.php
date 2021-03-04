@@ -8,8 +8,13 @@ use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 
-class UserController extends Controller
-{
+class UserController extends Controller{
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function config()
     {
         return view('user.config');
