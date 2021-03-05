@@ -7,14 +7,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
 
-                @if (session('message'))
-                    <div class="alert alert-success alert-dismissible fade show " role="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                        {{ session('message') }}
-                    </div>
-                @endif
+                @include('includes.message')
 
                 <div class="card">
                     <div class="card-header">{{ __('Configuración de mi cuenta') }}</div>

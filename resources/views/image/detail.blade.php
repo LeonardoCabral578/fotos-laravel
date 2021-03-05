@@ -3,9 +3,9 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-10">
                 @include('includes.message')
-                @foreach ($images as $image)
+
                     <div class="card pub_image">
                         <div class="card-header">
 
@@ -25,13 +25,10 @@
 
                         <div class="card-body">
                             <div class="image-container">
-                                <a href="{{ route('image.detail', ['id' => $image->id]) }}">
-                                    <img src="{{ route('image.file', ['filename' => $image->image_path]) }}" alt="">
-                                </a>
+                                <img src="{{ route('image.file', ['filename' => $image->image_path]) }}" alt="">
                             </div>
                             <div class="description">
-                                <span class="nickname">{{ '@' . $image->user->nick }}</span>
-                                <span class="nickname date">{{' | '.\Carbon\Carbon::parse($image->created_at)->locale('es-AR')->diffForHumans(\Carbon\Carbon::now()) }}</span>
+                                <span class="nickname">{{ '@' . $image->user->nick . ': ' }}</span>
                                 <p>{{ $image->description }}</p>
                             </div>
 
@@ -45,12 +42,7 @@
                             </div>
                         </div>
                     </div>
-                @endforeach
 
-                <!-- PAGINATION -->
-                <div class="clearfix">
-                    {{ $images->links() }}
-                </div>
             </div>
         </div>
     </div>

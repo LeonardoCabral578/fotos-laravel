@@ -49,6 +49,15 @@ Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/config', [App\Http\Controllers\UserController::class, 'config'])->name('user.config');
-Route::post('/user/update', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
-Route::get('/user/avatar/{filename}', [App\Http\Controllers\UserController::class, 'getImage'])->name('user.avatar');
+# USER
+#-------------------------------------------------------------------------------------------#
+    Route::get('/config', [App\Http\Controllers\UserController::class, 'config'])->name('user.config');
+    Route::post('/user/update', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
+    Route::get('/user/avatar/{filename}', [App\Http\Controllers\UserController::class, 'getImage'])->name('user.avatar');
+
+# IMAGES
+#-------------------------------------------------------------------------------------------#
+    Route::get('/subir-imagen', [App\Http\Controllers\ImageController::class, 'create'])->name('image.create');
+    Route::post('/image/save', [App\Http\Controllers\ImageController::class, 'save'])->name('image.save');
+    Route::get('/image/file/{filename}', [App\Http\Controllers\ImageController::class, 'getImage'])->name('image.file');
+    Route::get('/image/{id}', [App\Http\Controllers\ImageController::class, 'detail'])->name('image.detail');
