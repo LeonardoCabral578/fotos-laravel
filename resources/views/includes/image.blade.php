@@ -7,7 +7,9 @@
             </div>
         @endif
         <div class="data-user">
-            {{ $image->user->name . ' ' . $image->user->surname }}
+            <a href="{{ route('user.profile', ['id' => $image->user->id]) }}">
+                {{ $image->user->name . ' ' . $image->user->surname }}
+            </a>
             <span class="nickname">
                 {{ ' | @' . $image->user->nick }}
             </span>
@@ -23,7 +25,8 @@
         <div class="description">
             <span class="nickname">{{ '@' . $image->user->nick }}</span>
             <span
-                class="nickname date">{{ ' | ' .\Carbon\Carbon::parse($image->created_at)->locale('es-AR')->diffForHumans(\Carbon\Carbon::now()) }}</span>
+                class="nickname date">{{ ' | ' .\Carbon\Carbon::parse($image->created_at)->locale('es-AR')->diffForHumans(\Carbon\Carbon::now()) }}
+            </span>
             <p>{{ $image->description }}</p>
         </div>
 
@@ -47,7 +50,7 @@
         </div>
 
         <div class="comments">
-            <a href="" class="btn btn-sm btn-warning btn-comments">
+            <a href="{{ route('image.detail', ['id' => $image->id]) }}" class="btn btn-sm btn-warning btn-comments">
                 Comentarios ({{ count($image->comments) }})
             </a>
         </div>

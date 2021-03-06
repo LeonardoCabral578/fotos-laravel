@@ -7,21 +7,19 @@ use Illuminate\Http\Response;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use App\Models\User;
 
 class UserController extends Controller{
 
-    public function __construct()
-    {
+    public function __construct(){
         $this->middleware('auth');
     }
 
-    public function config()
-    {
+    public function config(){
         return view('user.config');
     }
 
-    public function update(Request $req)
-    {
+    public function update(Request $req){
         // Conseguir usuario identificado
         $user = \Auth::user();
         $id = $user->id;
@@ -69,5 +67,13 @@ class UserController extends Controller{
     public function getImage($filename){
         $file = Storage::disk('users')->get($filename);
         return new Response($file, 200);
+    }
+
+    public function profile($id){
+        $user = User::find($id);
+
+        return view('user.profile', [
+            'user' => $user
+        ]);
     }
 }

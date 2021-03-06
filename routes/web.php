@@ -54,6 +54,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
     Route::get('/config', [App\Http\Controllers\UserController::class, 'config'])->name('user.config');
     Route::post('/user/update', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
     Route::get('/user/avatar/{filename}', [App\Http\Controllers\UserController::class, 'getImage'])->name('user.avatar');
+    Route::get('/perfil/{id}', [App\Http\Controllers\UserController::class, 'profile'])->name('user.profile');
 
 # IMAGES
 #-------------------------------------------------------------------------------------------#
