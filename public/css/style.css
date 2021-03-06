@@ -44,6 +44,11 @@
     overflow: hidden;
 }
 
+.image-detail{
+    max-height: 500px;
+}
+
+
 .image-container img{
     width: 100%;
 }
@@ -62,6 +67,10 @@
     margin: 20px;
     margin-top: 0px;
     margin-left: 0px;
+}
+
+.pub_image_detail .comments {
+    padding: 20px;
 }
 
 .likes{
