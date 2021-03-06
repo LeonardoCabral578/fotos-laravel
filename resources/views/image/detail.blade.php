@@ -36,8 +36,26 @@
                         </div>
 
                         <div class="likes">
-                            <img src="{{ asset('img/heart-black.png') }}" alt="">
+
+                            <!-- Comprobar si el usuario le dio like a la imágen -->
+                            <?php $user_like = false; ?>
+                            @foreach ($image->likes as $like)
+                                @if ($like->user->id == Auth::user()->id)
+                                    <?php $user_like = true; ?>
+                                @endif
+                            @endforeach
+
+                            @if ($user_like)
+                                <img src="{{ asset('img/heart-red.png') }}" data-id="{{ $image->id }}"
+                                    class="btn-dislike" alt="">
+                            @else
+                                <img src="{{ asset('img/heart-black.png') }}" data-id="{{ $image->id }}"
+                                    class="btn-like" alt="">
+                            @endif
+
+                            <span class="number_likes">{{ count($image->likes) }}</span>
                         </div>
+
                         <div class="clearfix"></div>
                         <div class="comments">
                             <h2>Comentarios ({{ count($image->comments) }})</h2>
@@ -67,7 +85,7 @@
                                     <span
                                         class="nickname date">{{ ' | ' .
     \Carbon\Carbon::parse($comment->created_at)->locale('es-AR')->diffForHumans(\Carbon\Carbon::now()) }}</span>
-                                    <p>{{ $comment->content }} <br>
+                                    <p>{{ $comment->content }}
 
                                         @if (Auth::check() && ($comment->user_id == Auth::user()->id || $comment->image->user_id == Auth::user()->id))
                                             <a href="{{ route('comment.delete', ['id' => $comment->id]) }}"

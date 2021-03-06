@@ -65,4 +65,15 @@ class LikeController extends Controller
             echo "Ya existe el Like";
         }
     }
+
+    public function likes(){
+        $user = \Auth::user();
+        $likes = Like::where('user_id', $user->id)
+            ->orderBy('id', 'desc')
+            ->paginate(5);
+
+        return view('like.likes', [
+            'likes' => $likes
+        ]);
+    }
 }

@@ -82,3 +82,8 @@
 .likes img{
     width: 20px;
 }
+
+.number_likes{
+    color: gray;
+    font-size: 11px;
+}

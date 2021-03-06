@@ -71,3 +71,4 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 #-------------------------------------------------------------------------------------------#
     Route::get('/like/{image_id}', [App\Http\Controllers\LikeController::class, 'like'])->name('like.save');
     Route::get('/dislike/{image_id}', [App\Http\Controllers\LikeController::class, 'dislike'])->name('like.delete');
+    Route::get('/likes', [App\Http\Controllers\LikeController::class, 'likes'])->name('like.likes');
