@@ -62,6 +62,9 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
     Route::post('/image/save', [App\Http\Controllers\ImageController::class, 'save'])->name('image.save');
     Route::get('/image/file/{filename}', [App\Http\Controllers\ImageController::class, 'getImage'])->name('image.file');
     Route::get('/image/{id}', [App\Http\Controllers\ImageController::class, 'detail'])->name('image.detail');
+    Route::get('/image/delete/{id}', [App\Http\Controllers\ImageController::class, 'delete'])->name('image.delete');
+    Route::get('/imagen/editar/{id}', [App\Http\Controllers\ImageController::class, 'edit'])->name('image.edit');
+    Route::post('/image/update', [App\Http\Controllers\ImageController::class, 'update'])->name('image.update');
 
 # COMMENTS
 #-------------------------------------------------------------------------------------------#
