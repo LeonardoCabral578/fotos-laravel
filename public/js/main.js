@@ -1,9 +1,12 @@
 var url = "http://proyecto-laravel.com.devel";
 
+
 window.addEventListener("load", function(){
 	$('.btn-like').css('cursor','pointer');
 	$('.btn-dislike').css('cursor','pointer');
 
+    /* LIKES
+    -------------------------------------------------------------------------------------------*/
 	$(document).on("click", ".btn-like", function(e){
 		$(this).addClass('btn-dislike').removeClass('btn-like');
 		$(this).attr('src', url+'/img/heart-red.png');
@@ -39,4 +42,11 @@ window.addEventListener("load", function(){
         });
 
 	});
+
+    /* BUSCADOR
+    -------------------------------------------------------------------------------------------*/
+    $('#buscador').submit(function(){
+        $(this).attr('action', url+'/gente/'+$('#buscador #search').val());
+    });
+
 });
