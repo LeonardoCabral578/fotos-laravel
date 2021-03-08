@@ -17,7 +17,9 @@
                         @endif
 
                         <div class="data-user">
-                            {{ $image->user->name . ' ' . $image->user->surname }}
+                            <a href="{{ route('user.profile', ['id' => $image->user->id]) }}">
+                                {{ $image->user->name . ' ' . $image->user->surname }}
+                            </a>
                             <span class="nickname">
                                 {{ ' | @' . $image->user->nick }}
                             </span>
